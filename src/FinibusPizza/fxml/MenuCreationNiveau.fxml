@@ -14,20 +14,20 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.MenuCreationNiveauControleur">
   <children>
     <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
             <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/fond.jpg" />
+                  <Image url="@../img/parametres.jpg" />
                </image>
             </ImageView>
             <VBox alignment="TOP_CENTER" layoutX="140.0" layoutY="70.0" prefHeight="579.0" prefWidth="1000.0">
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="270.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" text="FinibusPizza">
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="FinibusPizza" textFill="WHITE">
                            <font>
                               <Font size="46.0" />
                            </font>
@@ -35,7 +35,7 @@
                               <Glow level="0.0" />
                            </effect>
                         </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" text="Liste des niveaux">
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Création de niveaux" textFill="#bfbfbf">
                            <font>
                               <Font size="46.0" />
                            </font>
@@ -54,17 +54,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="btnTester" mnemonicParsing="false" onAction="#tester" text="Tester">
-                                 <font>
-                                    <Font size="17.0" />
-                                 </font>
-                              </Button>
                               <Button fx:id="btnValider" mnemonicParsing="false" onAction="#validerCrea" text="Valider">
-                                 <font>
-                                    <Font size="17.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="btnValideJouer" mnemonicParsing="false" onAction="#validerEtJouer" text="Valider et jouer">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
@@ -94,7 +84,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox fx:id="selectDifficulte" onAction="#choixDifficulte" prefWidth="150.0" promptText="Select" />
+                                    <ComboBox fx:id="selectDifficulte" onAction="#verificationValidation" prefWidth="150.0" promptText="Select" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="354.0">
@@ -109,13 +99,13 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Spinner fx:id="minNbIng" prefHeight="26.0" prefWidth="59.0" />
+                                    <Spinner fx:id="minNbIng" onMouseClicked="#minChangement" prefHeight="26.0" prefWidth="75.0" />
                                     <Label contentDisplay="CENTER" prefHeight="27.0" prefWidth="83.0" text="   Max">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Spinner fx:id="maxNbIng" prefHeight="26.0" prefWidth="59.0" />
+                                    <Spinner fx:id="maxNbIng" onMouseClicked="#maxChangement" prefHeight="26.0" prefWidth="74.0" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="354.0">
@@ -125,22 +115,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Spinner fx:id="margeTresor" prefHeight="26.0" prefWidth="59.0" />
-                                    <Label contentDisplay="CENTER" prefHeight="27.0" prefWidth="83.0" text="\%">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="354.0">
-                                 <children>
-                                    <Label contentDisplay="CENTER" prefHeight="27.0" prefWidth="202.0" text="Marge temps de jeu :">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Spinner fx:id="margeTemps" prefHeight="26.0" prefWidth="59.0" />
+                                    <Spinner fx:id="margeTresor" onMouseClicked="#verificationValidation" prefHeight="26.0" prefWidth="82.0" />
                                     <Label contentDisplay="CENTER" prefHeight="27.0" prefWidth="83.0" text="\%">
                                        <font>
                                           <Font size="18.0" />
@@ -175,13 +150,23 @@
                               <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0">
                                  <children>
                                     <Label alignment="CENTER" prefHeight="18.0" prefWidth="203.0" style="-fx-background-color: lightgrey; -fx-border-color: black;" text="Nombre" />
-                                    <Spinner fx:id="nbFacileClient" prefHeight="26.0" prefWidth="99.0" />
-                                    <Spinner fx:id="nbNormalClient" prefHeight="26.0" prefWidth="99.0" />
-                                    <Spinner fx:id="nbKarenClient" prefHeight="26.0" prefWidth="99.0" />
+                                    <Spinner fx:id="nbFacileClient" onMouseClicked="#verificationValidation" prefHeight="26.0" prefWidth="99.0" />
+                                    <Spinner fx:id="nbNormalClient" onMouseClicked="#verificationValidation" prefHeight="26.0" prefWidth="99.0" />
+                                    <Spinner fx:id="nbKarenClient" onMouseClicked="#verificationValidation" prefHeight="26.0" prefWidth="99.0" />
                                  </children>
                               </VBox>
                            </children>
                         </HBox>
+                        <Label fx:id="avertissement" layoutX="368.0" layoutY="267.0" opacity="0.0" text="Ce niveau existe déjà !" textFill="RED">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="reussite" layoutX="410.0" layoutY="267.0" opacity="0.0" text="Niveau crée !" textFill="#1aff00">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                        </Label>
                      </children>
                   </Pane>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="150.0">

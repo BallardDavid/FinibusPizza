@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.image.Image?>
@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.MenuModificationNiveau">
    <children>
       <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@../img/fond.jpg" />
+            <Image url="@../img/parametres.jpg" />
          </image>
       </ImageView>
       <AnchorPane layoutX="85.0" layoutY="159.0" prefHeight="403.0" prefWidth="545.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="158.0" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="650.0" AnchorPane.topAnchor="159.0">
@@ -32,7 +32,6 @@
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <ChoiceBox fx:id="mnSelectDifficulte" layoutX="104.0" layoutY="49.0" prefWidth="150.0" AnchorPane.bottomAnchor="323.0" AnchorPane.leftAnchor="104.0" AnchorPane.topAnchor="49.0" />
             <Label layoutX="14.0" layoutY="111.0" text="Nombre d'ingrédients :" AnchorPane.bottomAnchor="271.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="111.0">
                <font>
                   <Font size="14.0" />
@@ -52,11 +51,6 @@
                   <Font size="14.0" />
                </font></Label>
             <Spinner fx:id="mnMargeTresorerie" layoutX="137.0" layoutY="179.0" prefHeight="26.0" prefWidth="85.0" AnchorPane.bottomAnchor="198.0" AnchorPane.leftAnchor="137.0" AnchorPane.topAnchor="179.0" />
-            <Label layoutX="264.0" layoutY="183.0" prefHeight="21.0" prefWidth="97.0" text="Marge temps :" AnchorPane.bottomAnchor="199.0" AnchorPane.leftAnchor="264.0" AnchorPane.topAnchor="183.0">
-               <font>
-                  <Font size="14.0" />
-               </font></Label>
-            <Spinner fx:id="mnMargeTemps" layoutX="367.0" layoutY="181.0" prefHeight="26.0" prefWidth="85.0" AnchorPane.bottomAnchor="196.0" AnchorPane.leftAnchor="367.0" AnchorPane.topAnchor="181.0" />
             <Pane layoutX="14.0" layoutY="215.0" prefHeight="178.0" prefWidth="367.0" style="-fx-background-color: #eee;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="215.0">
                <children>
                   <Pane prefHeight="31.0" prefWidth="367.0" style="-fx-background-color: #ddd;">
@@ -93,6 +87,7 @@
                   <Spinner fx:id="mnNbKaren" layoutX="199.0" layoutY="116.0" prefHeight="25.0" prefWidth="73.0" />
                </children>
             </Pane>
+            <ComboBox fx:id="mnSelectDifficulte" layoutX="86.0" layoutY="52.0" prefWidth="150.0" />
          </children>
       </AnchorPane>
       <BorderPane layoutX="763.0" layoutY="159.0" prefHeight="403.0" prefWidth="399.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="158.0" AnchorPane.leftAnchor="763.0" AnchorPane.rightAnchor="118.0" AnchorPane.topAnchor="159.0">
@@ -104,19 +99,22 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <ChoiceBox fx:id="mnSelectNomNiveau" layoutX="21.0" layoutY="50.0" prefHeight="31.0" prefWidth="150.0" />
+                  <ComboBox fx:id="mnSelectNomNiveau" layoutX="21.0" layoutY="75.0" onAction="#ListNivChoix" prefWidth="150.0" />
+                  <ComboBox fx:id="mnSelectNomNiveauPers" layoutX="217.0" layoutY="75.0" onAction="#ListNivChoixPers" prefWidth="150.0" />
+                  <Label layoutX="21.0" layoutY="47.0" text="Niveau classique" />
+                  <Label layoutX="217.0" layoutY="47.0" text="Niveau personnalisés" />
                </children>
             </Pane>
          </top>
          <bottom>
             <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="mnModifier" layoutX="16.0" layoutY="64.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="367.0" text="Modifier">
+                  <Button fx:id="mnModifier" layoutX="16.0" layoutY="64.0" mnemonicParsing="false" onAction="#modifier" prefHeight="48.0" prefWidth="367.0" text="Modifier">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="mnSupprimer" layoutX="14.0" layoutY="131.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="367.0" text="Supprimer">
+                  <Button fx:id="mnSupprimer" layoutX="14.0" layoutY="131.0" mnemonicParsing="false" onAction="#suppr" prefHeight="49.0" prefWidth="367.0" text="Supprimer">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -130,20 +128,35 @@
             <Font size="48.0" />
          </font>
       </Label>
-      <Label layoutX="446.0" layoutY="80.0" prefHeight="70.0" prefWidth="388.0" text="Modification de niveau" textFill="WHITE" AnchorPane.bottomAnchor="570.0" AnchorPane.leftAnchor="446.0" AnchorPane.rightAnchor="446.0" AnchorPane.topAnchor="80.0">
+      <Label layoutX="446.0" layoutY="80.0" prefHeight="70.0" prefWidth="388.0" text="Modification de niveau" textFill="#bfbfbf" AnchorPane.bottomAnchor="570.0" AnchorPane.leftAnchor="446.0" AnchorPane.rightAnchor="446.0" AnchorPane.topAnchor="80.0">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Button fx:id="mnRetourPersonnsalisation" layoutX="299.0" layoutY="619.0" mnemonicParsing="false" text="Retour personnsalisation" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="299.0" AnchorPane.rightAnchor="686.0" AnchorPane.topAnchor="619.0">
+      <Button fx:id="mnRetourPersonnsalisation" layoutX="299.0" layoutY="619.0" mnemonicParsing="false" onAction="#retourPersonnalisation" text="Retour personnalisation" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="299.0" AnchorPane.rightAnchor="686.0" AnchorPane.topAnchor="619.0">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="mnRetourMenu" layoutX="687.0" layoutY="619.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="295.0" text="Retour menu" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="687.0" AnchorPane.rightAnchor="298.0" AnchorPane.topAnchor="619.0">
+      <Button fx:id="mnRetourMenu" layoutX="687.0" layoutY="619.0" mnemonicParsing="false" onAction="#retourMenu" prefHeight="51.0" prefWidth="295.0" text="Retour menu" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="687.0" AnchorPane.rightAnchor="298.0" AnchorPane.topAnchor="619.0">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
+      <Label fx:id="lbl_minMaxErreur" alignment="CENTER" layoutX="85.0" layoutY="578.0" prefHeight="17.0" prefWidth="1069.0" text="Le nombre d'ingrédients minimum doit être inférieur au nombre d'ingrédients maximum" textFill="RED" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_nbClientErreur" alignment="CENTER" layoutX="85.0" layoutY="578.0" prefHeight="17.0" prefWidth="1069.0" text="Il doit avoir au moins un client dans le niveau" textFill="RED" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_modifReussite" alignment="CENTER" layoutX="96.0" layoutY="578.0" prefHeight="17.0" prefWidth="1069.0" text="Modification réussite" textFill="#00ff1a" visible="false">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

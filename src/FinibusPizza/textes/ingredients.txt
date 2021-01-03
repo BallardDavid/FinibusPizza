@@ -1,0 +1,8 @@
+oignon/1/2
+champignon/1/2
+oeuf/2/3
+Chorizo/3/4
+Poulet/3/4
+Bacon/3/4
+fromage/2/6
+tomate/1/2
